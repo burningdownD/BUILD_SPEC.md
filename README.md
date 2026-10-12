@@ -1,17 +1,59 @@
 # Indoor-Golfliga
 
-Dieses Repository enthält eine vollständige Web-Anwendung (React + Netlify Functions) für eine einmalige Indoor-Golfliga.
+Eine minimale, aber vollständig lauffähige Version der Indoor-Golfliga mit React + Vite + Netlify Functions. Die App läuft lokal mit `npm run dev` und kann für Netlify mit den mitgelieferten Netlify Functions eingesetzt werden.
 
-Kurz: Frontend in React (Vite), Backend via Netlify Functions (Node.js, PostgreSQL über DATABASE_URL).
+## Voraussetzungen
 
-Setup (kurz):
+- Node.js 18+
+- npm
+- optional: PostgreSQL mit `DATABASE_URL`
 
-1. .env konfigurieren (siehe .env.example)
-2. npm install
-3. npm run db:migrate
-4. npm run db:seed
-5. npm run dev
+## Lokale Entwicklung
 
-Für Netlify: setze die Environment Variables in Netlify UI (PLAYER_PASSWORD, ADMIN_PASSWORD, SESSION_SECRET, DATABASE_URL, SEASON_END_DATE)
+1. `npm install`
+2. `.env.example` kopieren nach `.env` und Werte anpassen
+3. `npm run dev`
+4. Öffne `http://localhost:5173`
 
-Ausführliche Anleitung im README.md (siehe im Repo).
+## Env-Variablen
+
+```bash
+PLAYER_PASSWORD=spieler123
+ADMIN_PASSWORD=admin123
+SESSION_SECRET=geheimes-zufallstoken
+DATABASE_URL=postgresql://user:password@host:5432/dbname
+SEASON_END_DATE=2027-03-31
+```
+
+Wenn `DATABASE_URL` nicht gesetzt ist, arbeitet die App mit einem in-memory Demo-Store weiter, damit die lokale Entwicklung ohne Datenbank funktioniert.
+
+## Migration und Seed
+
+```bash
+npm run db:migrate
+npm run db:seed
+```
+
+## Netlify Deployment
+
+1. Repository auf GitHub pushen
+2. Netlify Projekt anlegen
+3. Build Command: `npm run build`
+4. Publish directory: `dist`
+5. Environment Variables in Netlify setzen
+6. Deploy starten
+
+## Netlify Funktionen
+
+- `/.netlify/functions/public-data`
+- `/.netlify/functions/auth-player`
+- `/.netlify/functions/auth-admin`
+- `/.netlify/functions/submit-round`
+- `/.netlify/functions/admin-data`
+- `/.netlify/functions/export-csv`
+
+## Tests
+
+```bash
+npm test
+```
