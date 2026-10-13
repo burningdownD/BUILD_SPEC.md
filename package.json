@@ -12,15 +12,15 @@
     "test": "vitest"
   },
   "dependencies": {
-    "react": "18.2.0",
-    "react-dom": "18.2.0",
+    "csv-stringify": "6.2.0",
     "jsonwebtoken": "9.0.0",
     "pg": "8.11.0",
-    "csv-stringify": "6.2.0"
+    "react": "18.2.0",
+    "react-dom": "18.2.0"
   },
   "devDependencies": {
-    "vite": "5.0.0",
-    "@vitejs/plugin-react": "4.0.0",
+    "@vitejs/plugin-react": "^6.1.2",
+    "vite": "^8.3.4",
     "vitest": "1.0.0"
   }
 }
